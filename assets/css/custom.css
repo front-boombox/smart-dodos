@@ -1,0 +1,46 @@
+.g-inner.spot{
+	padding: 190px 0 5%;
+}
+.g-inner .spotlight{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;
+}
+.g-inner .spotlight:nth-child(even){
+	-webkit-flex-direction: row-reverse;
+	-moz-flex-direction: row-reverse;
+	-ms-flex-direction: row-reverse;
+	-o-flex-direction: row-reverse;
+	flex-direction: row-reverse;
+}
+.g-inner .spotlight .image{
+	width: 40%;
+	padding: 20px;
+}
+.g-inner .spotlight .content{
+	width: 60%;
+	padding: 20px;
+}
+.g-inner .major{
+	text-align: center;
+}
+.g-inner .features{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	-webkit-flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	-o-flex-wrap: wrap;
+	flex-wrap: wrap;
+}
+.g-inner .features li{
+	width: 50%;
+	padding: 20px;
+}
