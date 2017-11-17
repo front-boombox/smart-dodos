@@ -1,0 +1,249 @@
+<?php
+/**
+ * Template Name: Home Page
+ */
+get_header(); ?>
+<div class="col-sm-12 who_sec" id="whoweare">
+<div class="who_right" >
+<div class="img_hold">
+<?php $page_image= wp_get_attachment_url(get_post_thumbnail_id($_post->ID));?>
+<img src="<?php echo $page_image; ?>" alt="" />
+<img src="<?php echo get_field('home_page_image');?>" alt="" />
+</div>
+</div>
+<div class="container">
+<div class="who_left">
+<div class="who_inner">
+<?php if(have_posts()):while(have_posts()):the_post();?>
+<?php the_content(); ?>
+<?php endwhile; endif; wp_reset_query(); ?>
+</div>
+</div>
+</div>
+</div>
+
+    
+    <div class="col-sm-12 products"  id="product">
+    	<div class="product_left">
+        	<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pic3.png" alt="" />
+        </div>
+       <div class="container">
+        <div class="row"> 
+        <div class=" col-sm-8 col-sm-push-4 product_right">
+        	<div class="product_inner">
+			<?php if (ICL_LANGUAGE_CODE == "nl") {echo "<h2>Producten</h2>";}?>
+            <?php if (ICL_LANGUAGE_CODE == "en") {echo "<h2>Products</h2>";}?>
+            	
+                <div style="position:relative" class="slider2">
+                	<div id="slider2">
+					<div>
+					<?php 
+					$i=1;
+					query_posts('post_type=product&showposts=-1');
+					while(have_posts()):the_post();
+					$product_image=wp_get_attachment_url(get_post_thumbnail_id($_post->ID));
+					?>
+					
+                  	
+                    <div class="col-xs-5 col-md-4 pro_box">
+                    <img src="<?php echo $product_image; ?>" alt="" />
+                    <h3><?php the_title(); ?></h3>
+                    <?php the_content(); ?>
+                    </div>
+			       <?php if($i%2=='0'){?>
+				   <?php echo'<div class="clearfix"></div></div><div>'; ?>
+	               <?php } ?>
+				   <?php $i++;  endwhile;?>  					
+                   <?php wp_reset_query()?>
+                  <div class="clearfix"></div>
+				  </div>      
+               
+                    </div>
+                </div>
+                
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        </div>
+        </div>
+    	<div class="clearfix"></div>
+    </div>
+    
+    
+    
+    <div class="col-sm-12 what_sec" id="whatwedo">
+    	<div class="what_right">
+        	<div class="col-xs-7 img_left">
+            	<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pic4.png" alt="" />
+            </div>
+            <div class="col-xs-5 img_right">
+            	<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pic5.png" alt="" />
+            </div>
+            <div class="img_abs">
+            	<div class="img_abs_inner">
+            		<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/pic6.png" alt="" />
+                </div>
+            </div>        
+        </div> 
+    	<div class="container">   	
+            <div class="what_left">
+            	<div class="what_inner">
+                  <?php echo get_field('what_we_do_content');?>
+                </div>            
+            </div>
+            </div>
+        <div class="clearfix"></div>
+    </div>
+    
+    
+
+    
+   
+    <div class="col-sm-12 energy_sec" id="energy">
+        <div class="container">
+			<?php if (ICL_LANGUAGE_CODE == "nl") {echo "<h2>Energieverbruik</h2>";}?>
+            <?php if (ICL_LANGUAGE_CODE == "en") {echo "<h2>Energy Uses</h2>";}?>
+            
+                <div class="row">
+                <div class="col-sm-6 energy_inn">
+				 <?php if (ICL_LANGUAGE_CODE == "nl") {echo "<h3>Duurzame Energie productie 2016 (%)</h3>";}?>
+                 <?php if (ICL_LANGUAGE_CODE == "en") {echo "<h3>Sustainable energy production 2016 (%)</h3>";}?>
+				 
+				  <?php
+				  $j=1;
+				  $e= query_posts('post_type=energy_uses&showposts=-1');
+				  $e_count = count($e);
+				  while(have_posts()):the_post(); 
+				  ?>
+				
+				 <div class="col-sm-6 box_inn">
+				 <div class="progressbar<?php if($j=='1'){echo '';}elseif($j=='2'){echo '1';} elseif($j=='3'){echo '2';}elseif($j=='4'){echo '3';}?>" data-animate="false">
+                 <div class="circle" data-percent="<?php echo $post->post_content;?>">
+                 <div></div>
+                 <p class="country"><span><?php the_title(); ?></span></p>
+                 </div>
+                 </div>
+                 </div>
+				 <?php if($j%2==0 && $e_count!=$j){?>
+				 <?php echo '</div><div class="col-sm-6 energy_inn">'?>
+				 <?php } ?>
+				 <?php if($j==2){?>
+				
+				 <?php if (ICL_LANGUAGE_CODE == "nl") {echo "<h3>Huishoudelijke Grootverbruiker (% van totaal)</h3>";}?>
+                 <?php if (ICL_LANGUAGE_CODE == "en") {echo "<h3>Household large consumers (% of total)</h3>";}?>
+				 <?php } ?>
+				 <?php $j++;  endwhile; wp_reset_query();?>
+                  
+                </div>
+            </div>
+            
+        </div>
+        <div class="clearfix"></div>
+    </div>
+   
+    
+<div class="col-sm-12 how_sec" id="howwedoit">
+<div class="container">
+<?php if (ICL_LANGUAGE_CODE == "nl") {echo "<h2>Hoe we het doen</h2>";}?>
+<?php if (ICL_LANGUAGE_CODE == "en") {echo "<h2>How we do it</h2>";}?>
+
+<div class="row">
+<div class="col-sm-4">
+<?php
+$n=1;
+query_posts('post_type=how_we_do_it&showposts=-1');
+while(have_posts()):the_post();
+?>
+<div class="how_hold">
+<div class="num_hold"><?php the_title(); ?></div>
+<div class="how_text"><?php the_content(); ?></div>
+<div class="clearfix"></div>
+</div>
+<?php if($n%3==0){ ?>	
+<?php echo '</div><div class="col-sm-4">';?>
+<?php  } ?>
+<?php $n++;  endwhile; wp_reset_query(); ?>
+</div>        	                  
+</div>
+</div>
+</div>
+
+    
+    
+    <div class="col-sm-12 com_logo">
+    	<div class="container">
+        	<div class="row" style="text-align:center;">
+			<?php query_posts('post_type=product-brand');
+			while(have_posts()):the_post();
+			$brand_image=wp_get_attachment_url(get_post_thumbnail_id($_post->ID));
+			?>
+            <div class="col-xs-6 col-sm-2 com_box" style="float:none; display:inline-block;">
+			<img src="<?php echo $brand_image; ?>" alt="" class="" />
+			</div>
+			<?php endwhile; wp_reset_query(); ?>	
+				
+    		</div>
+    	</div>
+    </div>
+    
+  <?php
+$hoofdkantoor = get_option( 'hoofdkantoor' );
+$phone = get_option( 'phone' );
+$email = get_option( 'email' );
+?>  
+    
+    <div class="col-sm-12 save_sec">
+    	<div class="save_shell" id="contact">
+            <div class="container">
+             <div class="row">
+                <div class="col-sm-5 save_left">
+                    <div class="save_inner">
+					  
+
+
+<?php if (ICL_LANGUAGE_CODE == "nl") {echo "<h2>Laten we praten & <span>SMART werken aan een betere toekomst!</span></h2>";}?>
+<?php if (ICL_LANGUAGE_CODE == "en") {echo "<h2>Let’s talk & <span>SMARTLY contribute to </span>a better future!</span></h2>";}?>
+                        
+						
+						<?php if(!empty($hoofdkantoor)){?>
+                        <p>
+						<?php if (ICL_LANGUAGE_CODE == "nl") {echo "Kantoor: ";}?>
+                        <?php if (ICL_LANGUAGE_CODE == "en") {echo "Office:";}?>
+						
+                        <br/><?php echo $hoofdkantoor; ?></p>
+                        <?php } ?>
+                        <div class="office_info">
+						<?php if(!empty($phone)){?>
+                            <p>T: <a href="tel:<?php echo $phone;?>"><?php echo $phone;?></a></p>
+						 <?php } ?>	
+						 <?php if(!empty($email)){?>
+                            <p>E: <a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></p>
+						 <?php } ?>	
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm-7 save_right"> 
+                    <div class="save_inner1"> 
+                        <div class="form_sec">  
+                        <?php if (ICL_LANGUAGE_CODE == "en") {?>						
+                        <h2>Leave us a message</h2>
+                        <?php echo  do_shortcode('[contact-form-7 id="46" title="Contact form 1"]');?>
+						<?php } ?>
+						<?php if (ICL_LANGUAGE_CODE == "nl") {?>						
+                        <h2>Laat ons een bericht achter</h2>
+                        <?php echo  do_shortcode('[contact-form-7 id="138" title="Contact de"]');?>
+						<?php } ?>
+                        </div>
+                    </div>
+                </div>
+              </div>  
+            </div>    
+        </div>    
+       <div class="clearfix"></div>
+    </div>
+    
+<?php
+//get_sidebar();
+get_footer();
+?>
