@@ -1,0 +1,188 @@
+<?php
+/**
+ * The template for displaying the header
+ */
+?><!DOCTYPE html>
+<html <?php language_attributes(); ?> class="no-js">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<meta name="format-detection" content="telephone=no" />
+
+<link href="<?php echo esc_url( get_template_directory_uri() ); ?>/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<link rel="icon" href="<?php echo esc_url( get_template_directory_uri() ); ?>/images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/fonts/fonts.css" type="text/css" />
+<title><?php wp_title( '|', true, 'right' ); ?></title>
+<link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/bootstrap.min.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/bootstrap.min.js"></script>
+
+<?php wp_head(); ?>
+  
+  <link rel="stylesheet" type="text/css" href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/font-awesome.css"/>     
+  <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/scroll.js" type="text/javascript"></script>    
+  
+  <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/sudo1.css" />
+
+	<script type="text/javascript" src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/jquery.sudoSlider.js"></script>
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+			var sudoSlider = $("#slider").sudoSlider({
+				responsive: true,
+				prevNext: true,
+				numeric:false,
+				continuous:true,
+				vertical:true,
+				slideCount: 1,
+				updateBefore: true,
+				pause: 4000,
+				speed:'200'
+			});
+		});
+	</script>
+    
+    
+    <script type="text/javascript">
+		$(document).ready(function(){
+			var sudoSlider = $("#slider2").sudoSlider({
+				responsive: true,
+				prevNext: true,
+				numeric:false,
+				continuous:true,
+			});
+		});
+	</script>
+    
+  <script src='<?php echo esc_url( get_template_directory_uri() ); ?>/js/scrollIt.min.js' type='text/javascript'></script>
+  <script>$(function() { jQuery.scrollIt(); });</script>
+  
+  <script type="text/javascript">
+  	$(function(){
+
+	$('#name').data('holder',$('#name').attr('placeholder'));
+	
+	$('#name').focusin(function(){
+		$(this).attr('placeholder','');
+	});
+	$('#name').focusout(function(){
+		$(this).attr('placeholder',$(this).data('holder'));
+	});
+	
+	
+	$('#email').data('holder',$('#email').attr('placeholder'));
+	
+	$('#email').focusin(function(){
+		$(this).attr('placeholder','');
+	});
+	$('#email').focusout(function(){
+		$(this).attr('placeholder',$(this).data('holder'));
+	});
+	
+	$('#phone').data('holder',$('#phone').attr('placeholder'));
+	
+	$('#phone').focusin(function(){
+		$(this).attr('placeholder','');
+	});
+	$('#phone').focusout(function(){
+		$(this).attr('placeholder',$(this).data('holder'));
+	});
+	
+	$('#message').data('holder',$('#message').attr('placeholder'));
+	
+	$('#message').focusin(function(){
+		$(this).attr('placeholder','');
+	});
+	$('#message').focusout(function(){
+		$(this).attr('placeholder',$(this).data('holder'));
+	});
+	
+	
+	})
+  </script>
+  
+  
+  <link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/animation.css" type="text/css" media="all" />
+
+<link rel="stylesheet" href="<?php echo esc_url( get_template_directory_uri() ); ?>/css/navigation.css">
+<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/responsive-nav.js"></script>
+
+</head>
+<body data-spy="scroll" data-target="#my-nav">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-100090274-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<?php
+$phone = get_option( 'phone' );
+$fb = get_option( 'facebook' );
+$linkedin = get_option( 'linkedin' );
+$houzz = get_option( 'houzz' );
+?>
+
+ <div class="col-sm-12 header_content navbar-fixed-top">
+    	<div class="container">
+            <div class="col-sm-4 logo">
+                <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/logo.png" alt="" style="width:75%;" /></a>
+            </div>
+        	<div class="col-sm-8 menu_sec">
+               <?php dynamic_sidebar('head_lang');?>
+                <div class="col-sm-10 col-sm-pull-2">
+                	
+                        <div class="navbar">
+                            <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                            <nav id="my-nav" class="navbar-collapse collapse" role="navigation">
+                                 <ul class="nav navbar-nav">
+                                  <?php if (ICL_LANGUAGE_CODE == "en") {?>
+               
+                                    <li class="menu-item"><a  href="<?php echo esc_url( home_url( '/' ) ); ?>#whoweare" >Who we are</a></li>
+                                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/' ) ); ?>#product">Products</a></li>
+                                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/' ) ); ?>#whatwedo">What we do</a></li>
+                                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/' ) ); ?>#howwedoit">How we do</a></li>
+                                    <li class="menu-item"><a href="https://www.smartdodos.com/blog/">Blog</a></li>
+                                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/' ) ); ?>#contact">Contact</a></li>
+                                  
+                                                                   
+                                  <?php } ?>
+                                  
+                                  <?php if (ICL_LANGUAGE_CODE == "nl") {?>
+                                                     
+                                    <li class="menu-item"><a  href="<?php echo esc_url( home_url( '/' ) ); ?>#whoweare" >Wie zijn we</a></li>
+                                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/' ) ); ?>#product">Producten</a></li>
+                                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/' ) ); ?>#whatwedo">Wat doen we</a></li>
+                                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/' ) ); ?>#howwedoit">Hoe doen we</a></li>
+                                    <li class="menu-item"><a href="https://www.smartdodos.com/blog/?lang=nl">Blog</a></li>
+                                    <li class="menu-item"><a href="<?php echo esc_url( home_url( '/' ) ); ?>#contact">Contact</a></li>
+                                  
+                                  <?php } ?>
+                                    
+                                  </ul>  
+                                  
+                                  </nav>    
+                            </div>
+                	
+                </div>
+            </div>
+        </div>
+    </div>
+	
+
+<div class="padding_top1"></div>
+    <div class="banner" style="padding: 40px 0 5%;">
+
+        <div class="clearfix"></div>
+    </div>

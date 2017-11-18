@@ -1,0 +1,23 @@
+<?php
+/**
+ * The template for displaying all pages
+ */
+
+get_header('inner'); ?>
+
+ <!-- CONTENT START -->
+    <div id="content"> 
+		<div class="container inner">
+        	<div class="col-sm-12">
+            <?php the_title('<h2 class="g-title-page">','</h2>');?>
+                <div class="line"></div>
+            <?php while ( have_posts() ) : the_post(); ?>
+			<?php the_content(); ?>
+			<?php endwhile; ?>
+              
+                
+            </div>
+        </div>
+    </div>
+    <!-- CONTENT END -->
+<?php get_footer(); ?>
